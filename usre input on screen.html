@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User input on screen</title>
+  <style>
+body{
+
+  margin: 0;
+  padding: 0%;
+
+}
+h1{
+  user-select: none;
+  color: #333;
+  font-size: 200px;
+  font-weight: 300;
+}
+.main{
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+  </style>
+</head>
+<body>
+<div class="main">
+  <h1></h1>
+</div>
+  <script>
+let sel = document.querySelector("h1");
+window.addEventListener("keydown",function (e) {
+
+  
+ if (e.key === null) {
+    sel.textContent="SPC";
+ } else {
+    sel.textContent=e.key;
+ }
+  
+});
+</script>
+</body>
+
+</html>
