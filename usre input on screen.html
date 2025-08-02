@@ -3,47 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User input on screen</title>
+  <title>input form</title>
   <style>
-body{
+    *{
+      margin: 0;
+      padding: 0;
+   background-image: url("https://images.unsplash.com/photo-1752035682783-308aadea1ca0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOTl8fHxlbnwwfHx8fHw%3D");
 
-  margin: 0;
-  padding: 0%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+ background-attachment: fixed;
+  background-repeat: no-repeat;
+    }
+    .main{
+      display: block;
+      margin:7%;
+      height: 1000px;
+    }
+    .main input{
+      display: block;
+      outline: none;
+      height: 25px;
+      border-radius: 6px;
+      border: none;
+    }
+    
+    .submit{
+      background: rgb(42, 83, 161);
+      color: azure;
+      padding: 3px;
+    }
+ 
 
+    .img ,.text{
+      margin-bottom: 5px;
+      text-indent: 5px;
+      outline-color: invert;
+      background-color: rgb(50, 61, 71);
+      color: white;
+      box-shadow:  0px 0px 3px white;
+    }
+
+    input::placeholder{
+      color: wheat;
+    }
+.input[type="text"]:hover {
+  background: linear-gradient(to right, #0e1b33, #292929);
+  color: white;
 }
-h1{
-  user-select: none;
-  color: #333;
-  font-size: 200px;
-  font-weight: 300;
+.input[type="text"]:hover::placeholder{
+  color: white;
 }
-.main{
-  background-color: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
+    .submain{
+      max-width:200px;
+      margin-left: 80px;
+      border: 2px solid gray;
+      padding: 8px;
+      border-radius: 4px;
+    }
+
+     .profile{
+      width: 90px;
+      height: 90px;
+      
+    }
+
+    .profile img{
+      width: 100%;
+      height: 100%;
+    
+      border-radius: 50%;
+    }
+   .submain h3{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    font-size: 30px;
+    color: rgb(240, 255, 127);
+   }
+
+   .submain h5{
+    color: rgb(253, 252, 252);
+    font-family: roboto;
+    font-size: 20px;
+    text-indent: 10px;
+  }
+
+  p{
+
+    color:rgb(201, 200, 200) ;
+    font-size: large;
+    font-weight: 100;
+    font-family: sans-serif;
+    text-indent: 13px;
+  }
   </style>
 </head>
 <body>
-<div class="main">
-  <h1></h1>
-</div>
-  <script>
-let sel = document.querySelector("h1");
-window.addEventListener("keydown",function (e) {
+  <form action="">
+  <div class="main">
+    <input type="text" class="img" placeholder="enter  img ">
+    <input type="text" placeholder="enter  name"class="text">
+    <input type="text" placeholder="occupation"class="text">
+    <input type="text" placeholder="info"class="text">
+    <input type="submit" class="submit">
+  </div>
+</form>
+<!-- 
+<form >
+   <div class="submain">
+    <div class="profile">
+      <img src="headerimg/2b30f71c-42a4-4dbc-b326-21b89f04d279.jpg.jpeg" alt="">
+    </div>
+    <h3>luxury room </h3>
+    <h5>sutable palce for visiters</h5>
+    <p>A place where visiters stay in night </p>
+   </div>
+    
+</form>   -->
 
+<script>
+  let inputs = document.querySelectorAll("input");
+ 
+  let main = document.querySelector(".main")
+  let submain = document.createElement("div");
+  submain.classList.add("submain");
   
- if (e.key === null) {
-    sel.textContent="SPC";
- } else {
-    sel.textContent=e.key;
- }
+  let form =document.querySelector("form");
   
-});
+  
+  
+  form.addEventListener("submit",function (dets) {
+  dets.preventDefault();
+   let profile = document.createElement("div");
+    profile.classList.add("profile");
+    let submit = document.querySelector(".submit");
+    let img = document.createElement("img");
+    img.setAttribute("src",inputs[0].value );
+    console.log(submain);
+    
+  let h3=document.createElement("h3");
+  let h5=document.createElement("h5");
+  let p=document.createElement("p");
+
+  profile.appendChild(img);
+ console.log(profile);
+ 
+  submain.appendChild(profile);
+
+    submain.appendChild(h3);
+    submain.appendChild(h5);
+    submain.appendChild(p);
+    main.appendChild(submain);
+ 
+   
+   img.textContent=inputs[0].value;
+   h3.textContent=inputs[1].value;
+   h5.textContent=inputs[2].value;
+   p.textContent=inputs[3].value;
+  
+   inputs.forEach(function (inp) {
+    if (inp.type !== "submit") {
+     
+    inp.value ="";
+   }
+   })
+   
+  
+  }) 
+ 
 </script>
 </body>
-
 </html>
